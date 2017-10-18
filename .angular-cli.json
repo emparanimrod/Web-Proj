@@ -19,9 +19,21 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/bootstrap-select/bootstrap-select.js",
+        "../node_modules/owl-carousel/owl.carousel.js",
+        "../node_modules/bootstrap3-typeahead/bootstrap3-typeahead.js",
+        "../node_modules/tether/dist/js/tether.min.js",
+        "../node_modules/mimity/mimity.js"
+
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

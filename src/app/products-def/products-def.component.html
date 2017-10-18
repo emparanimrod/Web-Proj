@@ -1,0 +1,423 @@
+
+<div class="container-main">
+
+  <div class="row align-self-center">
+    <div class="col-1"></div>
+    <div class="col-10">
+  <div class="row">
+    <div class="container col-2">
+        <ul class="sidemenu-right list-group multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <a class="dropdown-submenu " *ngFor="let category of parentCategories" >
+                <a  class="dropdown-item list-group-item-l"  tabindex="-1" href="#{{category.id}}" >
+                  <img src=" {{category.image}} ">
+                  {{category.name}}</a>
+                  <!-- child menu -->
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu" *ngFor="let subcat1 of subcat1" >
+                    <a class="dropdown-item" href="#{{subcat1.id}}" *ngIf="(subcat1.parent == category.id) else (subcat1.length > 0)" >{{subcat1.name}}</a>
+                    <ul class="dropdown-menu" *ngIf="subcat2.length > 0">
+                        <li>
+                          <a *ngFor="let subcat2 of subcat2">
+                            <a class="dropdown-item" *ngIf="subcat2.parent == subcat1.id" > {{subcat2.name}} </a>
+                          </a>
+                        </li>
+                    </ul> 
+                  </li> 
+                </ul>
+              </a>
+          </ul>
+    </div>
+
+    <div class="col-8 container-fluid">
+        <a>
+            <img class="img-fluid" height="300px" src="assets/img/slide-2-full.jpg">
+            
+         </a>
+    </div>
+
+    <div class="container col-2">
+        <ul class=" sidemenu list-group">
+            <a class=" list-group-item">
+              <p >
+                <i class="fa fa-money"></i>
+                <b >SELL ON MTUSH</b>
+                Become a Vendor
+                </p>
+            </a>
+            <a class="list-group-item ">
+              <p text-wrap>
+                <i class="fa fa-credit-card"></i>
+                <b>PAY ON DELIVERY</b>
+                Pay at your doorstep
+              </p>
+            </a>
+            <a class="list-group-item">
+                <p text-wrap>
+                  <i class="fa fa-money"></i>
+                  <b>EXCLUSIVE OFFERS</b>
+                  Download our App for the Best Deals
+
+                </p>
+            </a>
+          </ul>
+    </div>
+  </div>
+  <div class="col-1"></div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid-prod m-t-2">
+      <div class="row">
+        <!-- New Arrivals & Best Selling -->
+
+        <div class="col-md-3 float-sm-left">
+            <div class="title"><span><a href="products.html">New Arrivals</a></span></div>
+            <div class="box-product-outer">
+            <div class="box-product" height="150" *ngFor="let product of products | slice:0:1; let i = index">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="{{product.featured_src}}">
+                  </a>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">{{product.title}}</a></h6>
+                <div class="price">
+                  <div>{{product.price | currency:'KSH':true}}</div>
+                </div>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <a href="#">(5 reviews)</a>
+                  </div>
+              </div>
+            </div>
+
+              <div class="clearfix visible-sm visible-xs"></div>
+
+              <!-- Featured -->
+              <div class="title"><span><a href="products.html">Best Selling</a></span></div>
+              <div class="box-product" *ngFor="let product of products | slice:0:1; let i = index">
+                  <div class="img-wrapper">
+                    <a href="detail.html">
+                      <img alt="Product" src="{{product.featured_src}}">
+                    </a>
+                    <div class="option">
+                      <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                      <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                      <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                    </div>
+                  </div>
+                  <h6><a href="detail.html">{{product.title}}</a></h6>
+                  <div class="price">
+                    <div>{{product.sale_price}}<span class="label-tags"><span class="label label-danger arrowed">-10%</span></span></div>
+                    <span class="price-old">{{product.regular_price}}</span>
+                  </div>
+                  <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <a href="#">(5 reviews)</a>
+                  </div>
+                </div>
+        </div>
+        <div class="col-sm-9 float-sm-right">
+            <div class="title"><span>Featured Products</span></div>
+            <div class="row">
+              <div class="col-sm-5 col-lg-3" *ngFor="let product of featuredProducts | slice:0:4; let i = index">
+                <div class="box-product-outer">
+                  <div class="box-product" >
+                      <div class="img-wrapper">
+                        <a href="detail.html">
+                          <img alt="Product" src="{{product.featured_src}}">
+                        </a>
+                        <div class="option">
+                          <a href="#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                        </div>
+                      </div>
+                      <h6><a href="detail.html">{{product.title}}</a></h6>
+                      <div class="price">
+                        <div *ngIf="product.sale_price">{{product.sale_price | currency:'KSH':true}} <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
+                        <span *ngIf="product.sale_price" class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
+                        <span *ngIf="!product.sale_price"class="price">{{product.regular_price | currency:'KSH':true}}</span>
+                      </div>
+                      <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <a href="#">(5 reviews)</a>
+                      </div>
+                  </div>
+                    </div>
+              </div>
+            </div>
+            <div></div>
+            <div class="clearfix visible-sm visible-xs"></div>
+
+            <div class="title"><span>HOT Deals Right NOW!!!!</span></div>
+            <div class="row">
+              <div class="col-sm-5 col-lg-3" *ngFor="let product of saleProducts">
+                <div class="box=product-outer">
+                  <div class="box-product" >
+                      <div class="img-wrapper">
+                        <a href="detail.html">
+                          <img alt="Product" src="{{product.featured_src}}">
+                        </a>
+                        <div class="option">
+                          <a href="#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                        </div>
+                      </div>
+                      <h6><a href="detail.html">{{product.title}}</a></h6>
+                      <div class="price">
+                        <div>{{product.sale_price | currency:'KSH':true}} <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
+                        <span class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
+                      </div>
+                      <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <a href="#">(5 reviews)</a>
+                      </div>
+                  </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="clearfix visible-sm visible-xs"></div>
+
+
+
+          <div class="clearfix visible-sm visible-xs"></div>
+
+          <!-- Collection -->
+          <!-- <div class="title m-t-2"><span>V-Neck Collection</span></div>
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-default arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">PhosphorusGrey Melange Printed V Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-danger arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div><div class="owl-item active" style="width: 212px;"><div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck2.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-primary arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">United Colors of BenettonNavy Blue Solid V Neck T Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-success arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div><div class="owl-item active" style="width: 212px;"><div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck3.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-success arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">WranglerBlack V Neck T Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-primary arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div><div class="owl-item active" style="width: 212px;"><div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck4.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-info arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">Tagd New YorkGrey Printed V Neck T-Shirts</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-default arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div><div class="owl-item" style="width: 212px;"><div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-default arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">PhosphorusGrey Melange Printed V Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-danger arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div><div class="owl-item" style="width: 212px;"><div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck2.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-primary arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">United Colors of BenettonNavy Blue Solid V Neck T Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-success arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="#">(5 reviews)</a>
+                </div>
+              </div>
+            </div></div></div></div><div class="owl-nav"><div class="owl-prev disabled"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div><div class="owl-dots disabled"></div></div> -->
+          <!-- End Collection -->
+
+        </div>
+<!-- 
+      </div> -->
+
+    <!-- </div> -->
+
+  <!-- Brand & Clients -->
+  <div class="row">
+      <div class="col-xs-12 m-t-1">
+        <div class="title text-center"><span>Brand &amp; Clients</span></div>
+        <div class="brand-slider owl-carousel owl-theme owl-controls-top-offset owl-loaded owl-drag">
+          
+<div class="owl-stage-outer">
+  <div class="owl-stage" style="transform: translate3d(-195px, 0px, 0px); transition: 0.25s; width: 1950px;">
+    <div class="owl-item" style="width: 165px; margin-right: 30px;">
+      <div class="brand">
+            <a href=""><img src="images/demo/brand1.png" alt=""></a>
+      </div>
+    </div>
+      <div class="owl-item active" style="width: 165px; margin-right: 30px;" *ngFor="let product of products">
+        <div class="brand">
+            <a href=""><img src="images/demo/brand2.png" alt=""></a>
+          </div></div>
+      </div>
+    </div>
+    <!-- <div class="owl-nav"><div class="owl-prev"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div><div class="owl-dots disabled"></div></div> -->
+      </div>
+    </div>
