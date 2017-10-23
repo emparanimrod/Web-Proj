@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as WC from 'woocommerce-api';
 import {NgbCarouselConfig, NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-products-def',
@@ -20,7 +21,12 @@ export class ProductsDefComponent implements OnInit {
   saleProducts: any;
 
   
-  constructor(config: NgbCarouselConfig, dConfig: NgbDropdownConfig) { 
+  constructor(config: NgbCarouselConfig, 
+              dConfig: NgbDropdownConfig,
+              private route: ActivatedRoute) { 
+
+                //activated routes code
+                this.route.params.subscribe( params => console.log(params) );
 
     //carousel
     // config.wrap = true;

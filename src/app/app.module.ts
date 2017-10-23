@@ -18,6 +18,13 @@ import { DealsComponent } from './deals/deals.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
+
+export const ROUTES: Routes = [
+  { path: '', component: ProductsDefComponent },
+  {path: 'products', component: ProductsDefComponent},
+  {path: 'product/:product', component: ProductdetailsComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,10 +43,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
     MatMenuModule, 
     MatToolbarModule, 
     MatIconModule,
-    RouterModule.forRoot([
-      {path:'productDetails', component: ProductdetailsComponent },
-      {path: 'products', component: ProductsDefComponent }
-    ])
+    RouterModule.forRoot(ROUTES)
 
   ],
   providers: [],

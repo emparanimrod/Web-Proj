@@ -10,7 +10,7 @@ export class ProductdetailsComponent implements OnInit {
   constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.route)
+    console.log('current routes',  );
   }
 
 }
