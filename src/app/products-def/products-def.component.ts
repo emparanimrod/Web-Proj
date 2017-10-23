@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as WC from 'woocommerce-api';
 import {NgbCarouselConfig, NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-products-def',
@@ -23,14 +23,11 @@ export class ProductsDefComponent implements OnInit {
   
   constructor(config: NgbCarouselConfig, 
               dConfig: NgbDropdownConfig,
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute,
+              private router: Router) { 
 
                 //activated routes code
-                this.route.params.subscribe( params => console.log(params) );
 
-    //carousel
-    // config.wrap = true;
-    dConfig.placement= 'bottom-right';
 
     this.WooCommerce = WC({
       url: 'https://cloud.edgetech.co.ke/m-tush',
@@ -61,7 +58,7 @@ export class ProductsDefComponent implements OnInit {
         if(this.products[i].sale_price){
           this.saleProducts.push(this.products[i]);
         }
-      } console.log(this.saleProducts);
+      }
 
 
      }, (err) =>{
@@ -101,8 +98,12 @@ export class ProductsDefComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    
   }
 
-
-
+onSelect(product){
+  this.router.navigate(['product', product.id]);
+  console.log(this.router)
+}
 }
