@@ -20,13 +20,28 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "assets/tether/dist/css/tether.min.css",
+        "assets/bootstrap/dist/css/bootstrap.css",
+        "assets/font-awesome/css/font-awesome.css",
+        "assets/css/bootstrap-select.css",
+        "assets/js/owlcarousel/dist/assets/owl.carousel.css",
+        "assets/js/owlcarousel/dist/assets/owl.theme.default.css",
+        "assets/css/jquery.bootstrap-touchspin.css",
+        "assets/css/style.teal.flat.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
-
+        "assets/jquery/dist/jquery.js",
+        "assets/tether/dist/js/tether.min.js",
+        "assets/bootstrap/dist/js/bootstrap.min.js",
+        "assets/js/bootstrap-select.js",
+        "assets/js/owlcarousel/dist/owl.carousel.js",
+        "assets/ez-plus/src/jquery.ez-plus.js",
+        "assets/js/jquery.bootstrap-touchspin.js",
+        "assets/js/jquery.raty-fa.js",
+        "assets/js/bootstrap3-typeahead.js",
+        "assets/js/bootstrap-toolkit.js",
+        "assets/js/mimity.js",
+        "assets/js/mimity.detail.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

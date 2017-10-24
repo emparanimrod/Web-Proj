@@ -12,11 +12,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //angular material
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
 import { CategoriesComponent } from './categories/categories.component';
 import { DealsComponent } from './deals/deals.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { OwlModule } from "ng2-owl-carousel";
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+// import { EzPlus } from "ez-plus";
 
 
 export const ROUTES: Routes = [
@@ -38,11 +40,8 @@ export const ROUTES: Routes = [
     BrowserModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatCardModule, 
-    MatMenuModule, 
-    MatToolbarModule, 
-    MatIconModule,
+    OwlModule,
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(ROUTES)
 
   ],

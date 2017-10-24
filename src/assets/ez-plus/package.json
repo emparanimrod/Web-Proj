@@ -1,0 +1,114 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ez-plus",
+        "scope": null,
+        "escapedName": "ez-plus",
+        "name": "ez-plus",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\xampp\\htdocs\\M-Tush\\Mtush-Web"
+    ]
+  ],
+  "_from": "ez-plus@latest",
+  "_id": "ez-plus@1.2.1",
+  "_inCache": true,
+  "_location": "/ez-plus",
+  "_nodeVersion": "7.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ez-plus-1.2.1.tgz_1488799820010_0.6048109913244843"
+  },
+  "_npmUser": {
+    "name": "igorlino",
+    "email": "icampista@gmx.de"
+  },
+  "_npmVersion": "4.0.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ez-plus",
+    "scope": null,
+    "escapedName": "ez-plus",
+    "name": "ez-plus",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ez-plus/-/ez-plus-1.2.1.tgz",
+  "_shasum": "b16dca155e75944301fdcde3ccd9a7944a6f99c3",
+  "_shrinkwrap": null,
+  "_spec": "ez-plus",
+  "_where": "C:\\xampp\\htdocs\\M-Tush\\Mtush-Web",
+  "author": {
+    "name": "Andy Eades",
+    "url": "http://www.elevateweb.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/igorlino/elevatezoom-plus/issues"
+  },
+  "contributors": [
+    {
+      "name": "Igor Lino",
+      "email": "igorlino@github.com",
+      "url": "https://github.com/igorlino"
+    }
+  ],
+  "demo": "http://igorlino.github.io/elevatezoom-plus/examples",
+  "dependencies": {},
+  "description": "A jQuery image zoom plug-in, with tints, easing and gallery integration.",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.8.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "b16dca155e75944301fdcde3ccd9a7944a6f99c3",
+    "tarball": "https://registry.npmjs.org/ez-plus/-/ez-plus-1.2.1.tgz"
+  },
+  "docs": "http://igorlino.github.io/elevatezoom-plus/examples",
+  "gitHead": "b947282e01a99bc85d18039dac6d26996299338c",
+  "homepage": "http://igorlino.github.io/elevatezoom-plus/",
+  "keywords": [
+    "zoom",
+    "effects",
+    "elements",
+    "zooming"
+  ],
+  "license": "MIT",
+  "main": "src/jquery.ez-plus.js",
+  "maintainers": [
+    {
+      "name": "igorlino",
+      "email": "icampista@gmx.de"
+    }
+  ],
+  "name": "ez-plus",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "jquery": ">=2.1.4"
+  },
+  "readme": "[jQuery ElevateZoom Plus Plugin](http://igorlino.github.io/elevatezoom-plus/)\r\n================================\r\nCurrent Version: 1.2.1\r\n\r\n[EZ Plus](http://igorlino.github.io/elevatezoom-plus/) is an up-to-date jQuery image zoom plug-in based on [EZ](https://github.com/elevateweb/elevatezoom)\r\n\r\n## Features\r\n\r\n- Fully Customisable\r\n- Coloured Tints\r\n- [Fancybox-Plus](http://igorlino.github.io/fancybox-plus/) and [Colorbox](http://www.jacklmoore.com/colorbox/) Gallery Support\r\n- Variable zoom on mouse scroll\r\n- External Controls\r\n- Window Zoom, Lens Zoom and Inner Zoom\r\n- Free to use under MIT\r\n- JQuery plug-in\r\n- AngularJS directive available: [angular-elevatezoom-plus](https://github.com/igorlino/angular-elevatezoom-plus)\r\n\r\n## Installation\r\n\r\nVia [Bower](http://bower.io/):\r\n\r\n```bash\r\nbower install ez-plus\r\n```\r\n\r\nVia [npm](https://www.npmjs.com/):\r\n\r\n```bash\r\nnpm install ez-plus\r\n```\r\n\r\nIn a browser:\r\n\r\n```html\r\n\r\n<script src=\"https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.20/src/jquery.ez-plus.js\"></script>\r\n```\r\n\r\n## Getting Started\r\n\r\nInclude jQuery and the plug-in on a page. Include your images and initialise the plug-in.\r\n\r\n```html\r\n<img id=\"zoom_01\" src='images/large/image1.png' />\r\n\r\n<script>\r\n    $('#zoom_01').ezPlus();\r\n</script>\r\n```\r\n\r\nFor more information on how to setup and customise, [check the examples](http://igorlino.github.io/elevatezoom-plus/).\r\n\r\n## License\r\nLicensed under MIT license.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorlino/elevatezoom-plus.git"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "title": "EZ Plus",
+  "version": "1.2.1"
+}

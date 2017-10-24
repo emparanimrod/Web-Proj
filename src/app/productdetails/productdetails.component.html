@@ -1,7 +1,160 @@
-<p>
-  <a>
-    <p>Your product
-      
-    </p>
-  </a>
-</p>
+   <!-- Main Content -->
+<div class="container m-t-3">
+  <div class="row">
+
+<div class="container m-t-3">
+  <div class="row">
+
+      <div class="col-sm-4">
+          <div class="image-detail">
+            <img src="{{product.featured_src}}" data-zoom-image="images/demo/p1-large-1.jpg" alt="">
+          </div>
+          <div class="products-slider-detail owl-carousel owl-theme m-b-2">
+            <a href="#"><img src="images/demo/p1-1.jpg" data-zoom-image="images/demo/p1-large-1.jpg" alt="" class="img-thumbnail"></a>
+            <a href="#"><img src="images/demo/p1-2.jpg" data-zoom-image="images/demo/p1-large-2.jpg" alt="" class="img-thumbnail"></a>
+            <a href="#"><img src="images/demo/p1-3.jpg" data-zoom-image="images/demo/p1-large-3.jpg" alt="" class="img-thumbnail"></a>
+            <a href="#"><img src="images/demo/p1-4.jpg" data-zoom-image="images/demo/p1-large-4.jpg" alt="" class="img-thumbnail"></a>
+            <a href="#"><img src="images/demo/p1-1.jpg" data-zoom-image="images/demo/p1-large-1.jpg" alt="" class="img-thumbnail"></a>
+          </div>
+          <div class="title"><span>Share to</span></div>
+          <div class="share-button m-b-3">
+            <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+            <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i></button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-linkedin"></i></button>
+            <button type="button" class="btn btn-warning"><i class="fa fa-envelope"></i></button>
+          </div>
+        </div>
+
+
+    <div class="col-sm-8">
+      <div class="title-detail">{{product.title}}</div>
+      <table class="table table-detail">
+        <tbody>
+          <tr>
+            <td>Price</td>
+            <td>
+              <div class="price">
+                <div>{{product.price | currency:'KSH':true}} <span class="label label-default arrowed">-10%</span></div>
+                <span class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Availability</td>
+            <td *ngIf="product.purchaseable"><span class="label label-success arrowed">Available</span></td>
+            <td *ngIf="!product.purchaseable"><span class="label label-success arrowed">Out of Stock</span></td>
+          </tr>
+          <tr>
+            <td>Quantity</td>
+            <td>
+              <div class="input-qty">
+                <input type="text" value="1" class="form-control text-center"/>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Size</td>
+            <td>
+              <select class="selectpicker" data-width="80px">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Checkbox</td>
+            <td>
+              <div class="checkbox"><label><input type="checkbox" id="checkbox1"><span> Checkbox 1</span></label></div>
+              <div class="checkbox"><label><input type="checkbox" id="checkbox2"><span> Checkbox 2</span></label></div>
+            </td>
+          </tr>
+          <tr>
+            <td>Radio</td>
+            <td>
+              <div class="radio"><label><input type="radio" name="radio-product" checked="checked"><span>Radio 1</span></label></div>
+              <div class="radio"><label><input type="radio" name="radio-product"><span>Radio 2</span></label></div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+              <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-align-left"></i> Add to Compare</button>
+              <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-heart"></i> Add to Wishlist</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div class="col-md-8">
+          <ngb-tabset >
+              <ngb-tab class="float-sm-right" title="Description">
+                <ng-template ngbTabContent>
+                  <p [innerHTML]="product.description" ></p>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab>
+                <ng-template ngbTabTitle>Specifications</ng-template>
+                <ng-template ngbTabContent>
+                    <div role="tabpanel" class="tab-pane" id="detail">
+                        <div class="well">
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr *ngFor="let att of product.attributes">
+                                <td><b>{{att.name}}</b></td>
+                                <td *ngFor="let option of att.options">{{option}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab class="float-sm-right" title="Reviews">
+                  <ng-template ngbTabContent>
+                      <div *ngFor="let review of reviews">
+                          <div>
+                            <span class="pull-left">{{ review.reviewer_name }}</span>
+                            <span class="pull-right text-sm">
+                                <span *ngIf="review.rating >= 1">
+                                    <i class="fa fa-star" ></i>
+                                  </span>
+                                  <span *ngIf="review.rating >= 2">
+                                      <i class="fa fa-star"></i>
+                                    </span>
+                                    <span *ngIf="review.rating >= 3">
+                                        <i class="fa fa-star" ></i>
+                                      </span>
+                                      <span *ngIf="review.rating >= 4">
+                                          <i  ></i>
+                                        </span>
+                                        <span *ngIf="review.rating >= 5">
+                                            <i class="fa fa-star" ></i>
+                                          </span>
+                            </span>
+                
+                            <div class="clear"></div>
+                          </div>
+                
+                          <div>
+                            <span class="text-sm" ion-text color="gray">{{ review.time }}</span>
+                          </div>
+                
+                          <p class="text-sm">
+                            {{ review.review }}
+                          </p>
+                        </div>
+                
+                  </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+    </div>
+
+    </div>
+
+   

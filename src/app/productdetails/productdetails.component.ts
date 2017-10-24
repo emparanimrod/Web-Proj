@@ -1,21 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot } from "@angular/router";
 import * as WC from 'woocommerce-api';
+// import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
 
   product: any;
   WooCommerce: any; 
+  products: any[];
+  productItem: any;
+  reviews: any[] = [];
+
+  // galleryOptions: NgxGalleryOptions[];
+  // galleryImages: NgxGalleryImage[];
 
 
 
-  constructor( private route: ActivatedRoute) { 
+  constructor( private route: ActivatedRoute,
+               
+  
+    ) { 
+    
 
-    this.product.id = this.route.snapshot.url;
 
     this.WooCommerce = WC({
       url: 'https://cloud.edgetech.co.ke/m-tush',
@@ -27,21 +39,48 @@ export class ProductdetailsComponent implements OnInit {
       verifySsl: false,
       queryStringAuth: true
     });
+    
 
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.url;
-
-    this.WooCommerce.getAsync('products/' + this.product.id ).then((data)=>{
-      
-            this.product = JSON.parse(data.body).product_reviews;
-            console.log(this.product);
-      
-          }, (err) => {
-            console.log(err);
-          });
+    this.product = this.route.snapshot.params['product'];
     
+    
+        this.WooCommerce.getAsync('products/' + this.product).then( (data) => {
+    
+          this.productItem = [];
+          // this.products = JSON.parse(data.body).products;
+    
+          this.product = JSON.parse(data.body).product;
+    
+          console.log(this.product);
+
+          this.WooCommerce.getAsync('products/' + this.product.id + '/reviews').then((data)=>{
+            
+                  this.reviews = JSON.parse(data.body).product_reviews;
+                  console.log(this.reviews);
+            
+                }, (err) => {
+                  console.log(err);
+                });
+                
+    
+      });
+
+
+      //gallery
+      // this.galleryOptions = [
+      //   {
+      //     width: '350px',
+      //     height: '435px',
+      //     thumbnailsColumns: 4
+      //   }
+      // ];
+
+      // this.galleryImages = [
+      //  this.product.images
+      // ];
 
   }
 
