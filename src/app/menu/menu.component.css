@@ -1,3 +1,15 @@
 .sticky > .container > .row {
     padding-top: 20px;
 }
+
+.middle-header .btn-search {
+    color: #fff;
+    border-color: transparent;
+    background-color: #25aae1;
+}
+
+.btn-theme {
+    color: #fff;
+    background-color: #25aae1;
+    border-color: #25aae1;
+}

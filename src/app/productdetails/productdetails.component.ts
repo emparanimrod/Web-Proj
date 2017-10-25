@@ -84,4 +84,9 @@ export class ProductdetailsComponent implements OnInit {
 
   }
 
+  addToCart(product){
+     
+    
+  }
+
 }

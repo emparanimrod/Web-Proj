@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as WC from 'woocommerce-api';
 import {NgbCarouselConfig, NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ActivatedRoute, Router} from "@angular/router";
+import { ProductsService } from "../services/products.service";
+
 
 @Component({
   selector: 'app-products-def',
@@ -24,7 +26,8 @@ export class ProductsDefComponent implements OnInit {
   constructor(config: NgbCarouselConfig, 
               dConfig: NgbDropdownConfig,
               private route: ActivatedRoute,
-              private router: Router) { 
+              private router: Router,
+              private productsData: ProductsService ) { 
 
                 //activated routes code
 
@@ -42,28 +45,6 @@ export class ProductsDefComponent implements OnInit {
 
     //products
 
-    this.WooCommerce.getAsync('products').then( (data) => {
-
-      this.featuredProducts = [];
-      this.saleProducts = [];
-      console.log(JSON.parse(data.body));
-      this.products = JSON.parse(data.body).products;
-
-      for( let i = 0; i < this.products.length; i ++ ){
-         //featured products
-        if(this.products[i].featured == true){
-          this.featuredProducts.push(this.products[i]);
-        }
-        //products on sale
-        if(this.products[i].sale_price){
-          this.saleProducts.push(this.products[i]);
-        }
-      }
-
-
-     }, (err) =>{
-      console.log(err)
-     });
 
      this.WooCommerce.getAsync('products/categories').then((data) =>{
       // console.log(JSON.parse(data.body).product_categories);
@@ -74,6 +55,9 @@ export class ProductsDefComponent implements OnInit {
       this.subcat2 = [];
 
       // console.log(this.categories.length);
+
+      //products
+    
 
       for( let i = 0; i < this.categories.length; i ++ ){
         if(this.categories[i].parent == 0){
@@ -99,11 +83,68 @@ export class ProductsDefComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.productsData.productsData);
+    this.featuredProducts = [];
+    this.saleProducts = [];
+
+
+
+
+
+        
+        this.products = JSON.parse(localStorage.getItem('productlist')).products;
+        
+            // let products = localStorage.getItem('productlist');
+        
+            console.log('storage', this.products);
+        
+            for( let i = 0; i < this.products.length; i ++ ){
+               //featured products
+              if(this.products[i].featured == true){
+                this.featuredProducts.push(this.products[i]);
+              }
+              //products on sale
+              if(this.products[i].sale_price){
+                this.saleProducts.push(this.products[i]);
+              }
+            } 
+                  
+  
+    //          this.WooCommerce.getAsync('products').then( (data) => {
+          
+    //             this.featuredProducts = [];
+    //             this.saleProducts = [];
+    //             localStorage.setItem('productlist', (data.body));
+    //             console.log(JSON.parse(localStorage.getItem('productlist')));
+    //             // this.products = JSON.parse(data.body).products;
+          
+    //             for( let i = 0; i < this.products.length; i ++ ){
+    //                //featured products
+    //               if(this.products[i].featured == true){
+    //                 this.featuredProducts.push(this.products[i]);
+    //               }
+    //               //products on sale
+    //               if(this.products[i].sale_price){
+    //                 this.saleProducts.push(this.products[i]);
+    //               }
+    //             }
+          
+          
+    //            }, (err) =>{
+    //             console.log(err)
+    //            });
+  
+    //        }
+    // })
     
-  }
+           
+          }
+    
+
 
 onSelect(product){
   this.router.navigate(['product', product.id]);
   console.log(this.router)
 }
+
 }

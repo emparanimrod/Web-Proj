@@ -26,7 +26,7 @@
         "assets/css/bootstrap-select.css",
         "assets/js/owlcarousel/dist/assets/owl.carousel.css",
         "assets/js/owlcarousel/dist/assets/owl.theme.default.css",
-        "assets/css/jquery.bootstrap-touchspin.css",
+        "assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css",
         "assets/css/style.teal.flat.css"
       ],
       "scripts": [
@@ -36,7 +36,7 @@
         "assets/js/bootstrap-select.js",
         "assets/js/owlcarousel/dist/owl.carousel.js",
         "assets/ez-plus/src/jquery.ez-plus.js",
-        "assets/js/jquery.bootstrap-touchspin.js",
+        "assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js",
         "assets/js/jquery.raty-fa.js",
         "assets/js/bootstrap3-typeahead.js",
         "assets/js/bootstrap-toolkit.js",

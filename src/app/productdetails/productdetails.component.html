@@ -27,7 +27,7 @@
         </div>
 
 
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <div class="title-detail">{{product.title}}</div>
       <table class="table table-detail">
         <tbody>
@@ -35,55 +35,44 @@
             <td>Price</td>
             <td>
               <div class="price">
-                <div>{{product.price | currency:'KSH':true}} <span class="label label-default arrowed">-10%</span></div>
-                <span class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
+                <div>{{product.price | currency:'KSH':true}} <span class="badge badge-pill badge-success" *ngIf="product.sale_price">{{ ((product.regular_price-product.sale_price)/product.regular_price)*100 | number: '1.1-1' }}%off </span></div>
+                <span class="price-old" *ngIf="product.sale_price">{{product.regular_price | currency:'KSH':true}}</span>
               </div>
             </td>
           </tr>
           <tr>
             <td>Availability</td>
-            <td *ngIf="product.purchaseable"><span class="label label-success arrowed">Available</span></td>
-            <td *ngIf="!product.purchaseable"><span class="label label-success arrowed">Out of Stock</span></td>
+            <td *ngIf="product.purchaseable"><span class="badge badge-pill badge-success">Available</span></td>
+            <td *ngIf="!product.purchaseable"><span class="badge badge-pill badge-success">Out of Stock</span></td>
           </tr>
           <tr>
             <td>Quantity</td>
             <td>
-              <div class="input-qty">
-                <input type="text" value="1" class="form-control text-center"/>
+              <div class="row" style="width:200px">
+                <div class="col-2">
+                    <i class="fa fa-plus-circle"></i>
+                </div>
+                <div class="col-7">
+                    <input type="text" value="1" class="form-control text-center"/>
+                </div>
+                <div class="col-2">
+                    <i class="fa fa-minus-circle"></i>
+                </div>
+                
               </div>
             </td>
           </tr>
-          <tr>
-            <td>Size</td>
-            <td>
-              <select class="selectpicker" data-width="80px">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Checkbox</td>
-            <td>
-              <div class="checkbox"><label><input type="checkbox" id="checkbox1"><span> Checkbox 1</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" id="checkbox2"><span> Checkbox 2</span></label></div>
-            </td>
-          </tr>
-          <tr>
-            <td>Radio</td>
-            <td>
-              <div class="radio"><label><input type="radio" name="radio-product" checked="checked"><span>Radio 1</span></label></div>
-              <div class="radio"><label><input type="radio" name="radio-product"><span>Radio 2</span></label></div>
+          <tr *ngFor="let att of product.attributes">
+            <td>{{att.name}}</td>
+            <td >
+              <div *ngFor="let option of att.options" class="radio"><label><input type="checkbox" name="radio-product" id="checkbox1"><span> {{option}}</span></label></div>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-              <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-align-left"></i> Add to Compare</button>
+              <button class="btn btn-theme m-b-1" type="button" (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+              <!-- <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-align-left"></i> Add to Compare</button> -->
               <button class="btn btn-theme m-b-1" type="button"><i class="fa fa-heart"></i> Add to Wishlist</button>
             </td>
           </tr>
@@ -119,30 +108,36 @@
                   <ng-template ngbTabContent>
                       <div *ngFor="let review of reviews">
                           <div>
-                            <span class="pull-left">{{ review.reviewer_name }}</span>
-                            <span class="pull-right text-sm">
-                                <span *ngIf="review.rating >= 1">
-                                    <i class="fa fa-star" ></i>
-                                  </span>
-                                  <span *ngIf="review.rating >= 2">
-                                      <i class="fa fa-star"></i>
-                                    </span>
-                                    <span *ngIf="review.rating >= 3">
-                                        <i class="fa fa-star" ></i>
-                                      </span>
-                                      <span *ngIf="review.rating >= 4">
-                                          <i  ></i>
-                                        </span>
-                                        <span *ngIf="review.rating >= 5">
-                                            <i class="fa fa-star" ></i>
-                                          </span>
+                              <div class="media-left">
+                                  <a href="#" class="img-thumbnail">
+                                  <i class="fa fa-user"></i>
+                                  </a>
+                              
+                            <span class="float-left">{{ review.reviewer_name }}</span>
+                            <span class="float-right text-sm">
+                              <span *ngIf="review.rating >= 1">
+                                <i class="fa fa-star" style="color: gold"></i>
+                              </span>
+                              <span *ngIf="review.rating >= 2">
+                                <i class="fa fa-star" style="color: gold"></i>
+                              </span>
+                              <span *ngIf="review.rating >= 3">
+                                <i class="fa fa-star" style="color: gold"></i>
+                              </span>
+                              <span *ngIf="review.rating >= 4">
+                                <i class="fa fa-star" style="color: gold"></i>
+                              </span>
+                              <span *ngIf="review.rating >= 5">
+                                <i class="fa fa-star" style="color: gold"></i>
+                              </span>
                             </span>
                 
                             <div class="clear"></div>
                           </div>
+                          </div>
                 
                           <div>
-                            <span class="text-sm" ion-text color="gray">{{ review.time }}</span>
+                            <span class="text-sm">{{ review.time }}</span>
                           </div>
                 
                           <p class="text-sm">

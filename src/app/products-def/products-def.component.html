@@ -74,7 +74,7 @@
         <div class="col-md-3 float-sm-left">
             <div class="title"><span><a href="products.html">New Arrivals</a></span></div>
             <div class="box-product-outer">
-            <div class="box-product" height="150" *ngFor="let product of products | slice:0:1; let i = index">
+            <div class="box-product" height="150" *ngFor="let product of featuredProducts | slice:0:1; let i = index">
                 <div class="img-wrapper">
                   <a (click)="onSelect(product)" >
                     <img alt="Product" src="{{product.featured_src}}">
@@ -104,7 +104,7 @@
 
               <!-- Featured -->
               <div class="title"><span><a href="products.html">Best Selling</a></span></div>
-              <div class="box-product" *ngFor="let product of products | slice:0:1; let i = index">
+              <div class="box-product" *ngFor="let product of featuredProducts | slice:0:1; let i = index">
                   <div class="img-wrapper">
                     <a (click)="onSelect(product)">
                       <img alt="Product" src="{{product.featured_src}}">
@@ -169,7 +169,7 @@
 
             <div class="title"><span>HOT Deals Right NOW!!!!</span></div>
             <div class="row">
-              <div class="col-sm-5 col-lg-3" *ngFor="let product of saleProducts">
+              <div class="col-sm-5 col-lg-3" *ngFor="let product of saleProducts | slice:0:4; let i = index">
                 <div class="box=product-outer">
                   <div class="box-product" (click)="onSelect(product)">
                       <div class="img-wrapper">
@@ -214,42 +214,4 @@
       </div> -->
 
     <!-- </div> -->
-<div class="container">
-    <div class="row">
-      <div class="col-sm-12 m-t-1">
-        <div class="title text-center"><span>Brand & Clients</span></div>
-        <div class="brand-slider owl-carousel owl-theme owl-controls-top-offset">
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand1.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand2.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand3.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand4.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand5.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand1.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand2.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand3.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand4.png" alt=""></a>
-          </div>
-          <div class="brand">
-            <a href=""><img src="assets/images/demo/brand5.png" alt=""></a>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
+ <app-footercomponent></app-footercomponent>
