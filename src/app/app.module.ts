@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import * as WC from 'woocommerce-api';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsService } from "./services/products.service";
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -21,11 +22,14 @@ import { OwlModule } from "ng2-owl-carousel";
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FootercomponentComponent } from './footercomponent/footercomponent.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpModule } from "@angular/http";
+import { LoginComponent } from './login/login.component';
 // import { EzPlus } from "ez-plus";
 
 
 export const ROUTES: Routes = [
   { path: '', component: ProductsDefComponent },
+  { path: 'login', component: LoginComponent},
   {path: 'products', component: ProductsDefComponent},
   {path: 'product/:product', component: ProductdetailsComponent}
 ];
@@ -39,10 +43,13 @@ export const ROUTES: Routes = [
     MenuComponent,
     ProductdetailsComponent,
     FootercomponentComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     OwlModule,

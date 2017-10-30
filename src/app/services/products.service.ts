@@ -31,6 +31,5 @@ export class ProductsService {
   
   productsData(){
 
-     this.products;
   }
 }
