@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from "@angular/router";
 import * as WC from 'woocommerce-api';
+import { PersistenceService } from "angular-persistence";
+import { AsyncLocalStorage } from "angular-async-local-storage";
 // import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
@@ -23,8 +25,8 @@ export class ProductdetailsComponent implements OnInit {
 
 
   constructor( private route: ActivatedRoute,
-               
-  
+    private persistenceService: PersistenceService,
+    protected storage: AsyncLocalStorage
     ) { 
     
 
@@ -46,7 +48,7 @@ export class ProductdetailsComponent implements OnInit {
   ngOnInit() {
     this.product = this.route.snapshot.params['product'];
     
-    
+
         this.WooCommerce.getAsync('products/' + this.product).then( (data) => {
     
           this.productItem = [];
@@ -84,9 +86,96 @@ export class ProductdetailsComponent implements OnInit {
 
   }
 
-  addToCart(product){
-     
-    
-  }
 
+  addToCart(product){
+
+    this.storage.getItem("cart").subscribe((cart)=> {
+      console.log('Initial Cart Data', cart);
+      //cart module
+      if(cart == null || cart.length == 0){
+
+        cart = [];
+
+        cart.push({
+          "product": product,
+          "qty": 1,
+          "amount": parseFloat(product.price)
+        });
+      } else {
+
+        let added = 0;
+
+        for(let i = 0; i < cart.length; i++){
+          if(product.id == cart[i].product.id){
+            console.log("Product is already in the cart");
+
+            let qty = cart[i].qty;
+
+            cart[i].qty = qty+1;
+            cart[i].amount = parseFloat(cart[i].amount) + parseFloat(cart[i].product.price);
+            added = 1;
+          }
+        }
+        if(added == 0){
+          cart.push({
+            "product": product,
+            "qty": 1,
+            "amount": parseFloat(product.price)
+          });
+        }
+      }
+
+      this.storage.setItem("cart", cart).subscribe( (cart)=>{
+
+        console.log("cart updated", cart);
+        console.log(cart);
+
+      });
+
+    })
+  }
+  addToWish(product){
+    this.storage.getItem("wishlist").subscribe((wishlist)=> {
+      console.log('Initial Cart Data', wishlist);
+      //cart module
+      if(wishlist == null || wishlist.length == 0){
+  
+        wishlist = [];
+  
+        wishlist.push({
+          "product": product,
+        });
+      } else {
+  
+        let added = 0;
+  
+        for(let i = 0; i < wishlist.length; i++){
+          if(product.id == wishlist[i].product.id){
+            console.log("Product is already in the cart");
+  
+            let qty = wishlist[i].qty;
+  
+            wishlist[i].qty = qty+1;
+            wishlist[i].amount = parseFloat(wishlist[i].amount) + parseFloat(wishlist[i].product.price);
+            added = 1;
+          }
+        }
+        if(added == 0){
+          wishlist.push({
+            "product": product,
+            "qty": 1,
+            "amount": parseFloat(product.price)
+          });
+        }
+      }
+  
+      this.storage.setItem("cart", wishlist).subscribe( (cart)=>{
+  
+        console.log("cart updated", cart);
+        console.log(cart);
+  
+      });
+  
+    });
+  }
 }

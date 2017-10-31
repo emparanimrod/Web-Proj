@@ -3,6 +3,7 @@ import * as WC from 'woocommerce-api';
 import {NgbCarouselConfig, NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ActivatedRoute, Router} from "@angular/router";
 import { ProductsService } from "../services/products.service";
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class ProductsDefComponent implements OnInit {
               dConfig: NgbDropdownConfig,
               private route: ActivatedRoute,
               private router: Router,
-              private productsData: ProductsService ) { 
+              private productsData: ProductsService,
+              protected storage: AsyncLocalStorage ) { 
 
                 //activated routes code
 
@@ -108,34 +110,6 @@ export class ProductsDefComponent implements OnInit {
                 this.saleProducts.push(this.products[i]);
               }
             } 
-                  
-  
-    //          this.WooCommerce.getAsync('products').then( (data) => {
-          
-    //             this.featuredProducts = [];
-    //             this.saleProducts = [];
-    //             localStorage.setItem('productlist', (data.body));
-    //             console.log(JSON.parse(localStorage.getItem('productlist')));
-    //             // this.products = JSON.parse(data.body).products;
-          
-    //             for( let i = 0; i < this.products.length; i ++ ){
-    //                //featured products
-    //               if(this.products[i].featured == true){
-    //                 this.featuredProducts.push(this.products[i]);
-    //               }
-    //               //products on sale
-    //               if(this.products[i].sale_price){
-    //                 this.saleProducts.push(this.products[i]);
-    //               }
-    //             }
-          
-          
-    //            }, (err) =>{
-    //             console.log(err)
-    //            });
-  
-    //        }
-    // })
     
            
           }
@@ -147,4 +121,98 @@ onSelect(product){
   console.log(this.router)
 }
 
+addToCart(product){
+    
+        this.storage.getItem("cart").subscribe((cart)=> {
+          console.log('Initial Cart Data', cart);
+          //cart module
+          if(cart == null || cart.length == 0){
+    
+            cart = [];
+    
+            cart.push({
+              "product": product,
+              "qty": 1,
+              "amount": parseFloat(product.price)
+            });
+          } else {
+    
+            let added = 0;
+    
+            for(let i = 0; i < cart.length; i++){
+              if(product.id == cart[i].product.id){
+                console.log("Product is already in the cart");
+    
+                let qty = cart[i].qty;
+    
+                cart[i].qty = qty+1;
+                cart[i].amount = parseFloat(cart[i].amount) + parseFloat(cart[i].product.price);
+                added = 1;
+              }
+            }
+            if(added == 0){
+              cart.push({
+                "product": product,
+                "qty": 1,
+                "amount": parseFloat(product.price)
+              });
+            }
+          }
+    
+          this.storage.setItem("cart", cart).subscribe( (cart)=>{
+    
+            console.log("cart updated", cart);
+            console.log(cart);
+    
+          });
+    
+        })
+
+}
+addToWish(product){
+  this.storage.getItem("wishlist").subscribe((wishlist)=> {
+    console.log('Initial Cart Data', wishlist);
+    //cart module
+    if(wishlist == null || wishlist.length == 0){
+
+      wishlist = [];
+
+      wishlist.push({
+        "product": product,
+        "qty": 1,
+        "amount": parseFloat(product.price)
+      });
+    } else {
+
+      let added = 0;
+
+      for(let i = 0; i < wishlist.length; i++){
+        if(product.id == wishlist[i].product.id){
+          console.log("Product is already in the cart");
+
+          let qty = wishlist[i].qty;
+
+          wishlist[i].qty = qty+1;
+          wishlist[i].amount = parseFloat(wishlist[i].amount) + parseFloat(wishlist[i].product.price);
+          added = 1;
+        }
+      }
+      if(added == 0){
+        wishlist.push({
+          "product": product,
+          "qty": 1,
+          "amount": parseFloat(product.price)
+        });
+      }
+    }
+
+    this.storage.setItem("cart", wishlist).subscribe( (cart)=>{
+
+      console.log("cart updated", cart);
+      console.log(cart);
+
+    });
+
+  });
+}
 }

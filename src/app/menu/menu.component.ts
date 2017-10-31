@@ -4,6 +4,10 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Http } from "@angular/http";
 import { NgModel } from '@angular/forms';
 import { Form } from "@angular/forms";
+import { PersistenceService } from 'angular-persistence';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
+import {ActivatedRoute, Router} from "@angular/router";
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
@@ -21,18 +25,81 @@ export class MenuComponent implements OnInit {
   username: string;
   password: string;
   loggedIn: boolean;
-  user: any
+  user: any;
+  cartItems: any;
+  itemCount: any;
+  wishItem: any;
+  total: any;
 
-  constructor(dConfig: NgbDropdownConfig, public http: Http) {
+  constructor(dConfig: NgbDropdownConfig, public http: Http, private router: Router,
+    private persistenceService: PersistenceService, protected storage: AsyncLocalStorage) {
 
     dConfig.placement= 'bottom-left';
     this.username = "";
     this.password = "";
 
-  
+    this.total = 0.00;
+    //cart
+ this.storage.getItem('cart').subscribe((data)=>{
+   console.log('menu cart', data);
+  this.itemCount = data.length;
+   this.cartItems = data;
+
+   if(this.cartItems ){
+    this.cartItems.forEach( (item, index)=>{
+      this.total = this.total + (item.product.price * item.qty)
+    });
+    console.log(data);
+   } else {
+
+    console.log(Error);
+
+  }
+
+ });
    }
 
   ngOnInit() {
+
+
+//     this.total = 0.00;
+//     //cart
+//  this.storage.getItem('cart').subscribe((data)=>{
+//    console.log('menu cart', data);
+//   this.itemCount = data.length;
+//    this.cartItems = data;
+
+//    if(this.cartItems ){
+//     this.cartItems.forEach( (item, index)=>{
+//       this.total = this.total + (item.product.price * item.qty)
+//     });
+//     console.log(data);
+//    } else {
+
+//     console.log(Error);
+
+//   }
+
+//  })
+
+ this.storage.getItem('wishlist').subscribe((data)=>{
+  console.log('menu wishlist', data);
+ this.wishItem = data.length;
+
+  if(this.cartItems ){
+   this.cartItems.forEach( (item, index)=>{
+     this.total = this.total + (item.product.price * item.qty)
+   });
+   console.log(data);
+  } else {
+
+   console.log(Error);
+
+ }
+
+})
+
+ console.log(this.cartItems);
     
     this.user = sessionStorage.getItem("userLoginFirstname")
 
@@ -61,6 +128,7 @@ export class MenuComponent implements OnInit {
 
       if (response.error){
         console.log(response.error);
+        alert(response.error);
       }
 
       sessionStorage.setItem("userLoginId", response.user.id);
@@ -72,7 +140,7 @@ export class MenuComponent implements OnInit {
       this.loggedIn = true;
 
       console.log( sessionStorage.getItem("userLoginFirstname"), sessionStorage.getItem("userLoginEmail"), sessionStorage.getItem("userLoginId"), sessionStorage.getItem("userLoginUsername"), sessionStorage.getItem("userLoginCookie"),  );
-      
+      alert('You have Been Successfully Logged In');
     });
 
   }
@@ -88,4 +156,28 @@ export class MenuComponent implements OnInit {
 
     this.loggedIn = false;
   }
+
+  remove(item, i){
+    
+        let price = item.product.price;
+        let qty = item.qty;
+    
+        this.cartItems.splice(i, 1);
+    
+        this.storage.setItem("cart", this.cartItems).subscribe( () => {
+    
+          this.total = this.total - (price * qty);
+    
+        });
+    
+        if(this.cartItems.length == 0){
+    
+          this.total = 0;
+        }
+    
+      }
+
+      cart(){
+        this.router.navigate(['cart']);
+      }
 }

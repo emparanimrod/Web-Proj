@@ -4,6 +4,8 @@ import * as WC from 'woocommerce-api';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsService } from "./services/products.service";
 import { FormsModule } from '@angular/forms';
+import { PersistenceModule } from "angular-persistence";
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import { FootercomponentComponent } from './footercomponent/footercomponent.comp
 import { FooterComponent } from './footer/footer.component';
 import { HttpModule } from "@angular/http";
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 // import { EzPlus } from "ez-plus";
 
 
@@ -31,7 +34,8 @@ export const ROUTES: Routes = [
   { path: '', component: ProductsDefComponent },
   { path: 'login', component: LoginComponent},
   {path: 'products', component: ProductsDefComponent},
-  {path: 'product/:product', component: ProductdetailsComponent}
+  {path: 'product/:product', component: ProductdetailsComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
@@ -44,11 +48,14 @@ export const ROUTES: Routes = [
     ProductdetailsComponent,
     FootercomponentComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    PersistenceModule,
+    AsyncLocalStorageModule,
     HttpModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,

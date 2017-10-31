@@ -75,3 +75,7 @@
 .middle-header > .container > .row {
     padding-bottom: 10px;
 }
+.padded {
+    padding: 10px;
+    top: 40px;
+}

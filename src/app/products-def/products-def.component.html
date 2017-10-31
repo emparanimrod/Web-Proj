@@ -80,9 +80,8 @@
                     <img alt="Product" src="{{product.featured_src}}">
                   </a>
                   <div class="option">
-                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                    <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                    <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                    <a (click)="addToCart(product)" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a (click)="addToWish(product)" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
                   </div>
                 </div>
                 <h6><a (click)="onSelect(product)">{{product.title}}</a></h6>
@@ -110,9 +109,8 @@
                       <img alt="Product" src="{{product.featured_src}}">
                     </a>
                     <div class="option">
-                      <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                      <a href="#" data-toggle="tooltip" title="" data-original-title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                      <a href="#" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                      <a (click)="addToCart(product)" data-toggle="tooltip" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                      <a (click)="addToWish(product)" data-toggle="tooltip" title="" class="wishlist" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
                     </div>
                   </div>
                   <h6><a (click)="onSelect(product)">{{product.title}}</a></h6>
@@ -141,9 +139,8 @@
                           <img alt="Product" src="{{product.featured_src}}">
                         </a>
                         <div class="option">
-                          <a href="#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                          <a (click)="addToCart(product)" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                          <a (click)="addToWish(product)" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
                         </div>
                       </div>
                       <h6><a (click)="onSelect(product)">{{product.title}}</a></h6>
@@ -177,9 +174,8 @@
                           <img alt="Product" src="{{product.featured_src}}">
                         </a>
                         <div class="option">
-                          <a href="#" data-toggle="tooltip"  title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                          <a (click)="addToCart(product)" data-toggle="tooltip"  title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                          <a (click)="addToWish(product)" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
                         </div>
                       </div>
                       <h6><a (click)="onSelect(product)">{{product.title}}</a></h6>
