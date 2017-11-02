@@ -13,10 +13,10 @@
             <div class="col-md-3 col-sm-6">
               <div class="title-footer"><span>Information</span></div>
               <ul>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">FAQ</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Policy Privacy</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Terms and Conditions</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Shipping Methods</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/faq">FAQ</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/privacy">Policy Privacy</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/terms">Terms and Conditions</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/shippingmethods">Shipping Methods</a></li>
               </ul>
             </div>
             <div class="clearfix visible-sm-block"></div>
@@ -73,16 +73,16 @@
             <div class="col-md-3 col-sm-6">
               <div class="title-footer"><span>My Account</span></div>
               <ul>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Orders</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Vouchers</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Points</a></li>
-                <li><i class="fa fa-angle-double-right"></i> <a href="#">Logout</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/orders">Orders</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/vouchers">Vouchers</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a routerLink="/points">Points</a></li>
+                <li><i class="fa fa-angle-double-right"></i> <a (click)="logout()">Logout</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="text-center copyright">
-          Copyright &copy; 2016 Mimity All right reserved
+          Copyright &copy; 2017 M-Tush All right reserved
         </div>
       </div>
       <!-- End Footer -->

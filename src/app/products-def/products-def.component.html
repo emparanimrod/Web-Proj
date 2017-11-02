@@ -135,8 +135,8 @@
                 <div class="box-product-outer">
                   <div class="box-product" >
                       <div class="img-wrapper">
-                        <a (click)="onSelect(product)">
-                          <img alt="Product" src="{{product.featured_src}}">
+                        <a>
+                          <img (click)="onSelect(product)" alt="Product" src="{{product.featured_src}}">
                         </a>
                         <div class="option">
                           <a (click)="addToCart(product)" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
@@ -145,9 +145,9 @@
                       </div>
                       <h6><a (click)="onSelect(product)">{{product.title}}</a></h6>
                       <div class="price">
-                        <div *ngIf="product.sale_price">{{product.sale_price | currency:'KSH':true}} <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
-                        <span *ngIf="product.sale_price" class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
-                        <span *ngIf="!product.sale_price"class="price">{{product.regular_price | currency:'KSH':true}}</span>
+                        <div (click)="onSelect(product)" *ngIf="product.sale_price">{{product.sale_price | currency:'KSH':true}} <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
+                        <span (click)="onSelect(product)" *ngIf="product.sale_price" class="price-old">{{product.regular_price | currency:'KSH':true}}</span>
+                        <span (click)="onSelect(product)" *ngIf="!product.sale_price"class="price">{{product.regular_price | currency:'KSH':true}}</span>
                       </div>
                       <div class="rating">
                         <i class="fa fa-star"></i>
@@ -174,7 +174,7 @@
                           <img alt="Product" src="{{product.featured_src}}">
                         </a>
                         <div class="option">
-                          <a (click)="addToCart(product)" data-toggle="tooltip"  title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                          <a (click)="addToCart(product)" data-toggle="tooltip"  title="Add to Cart"><i (click)="reload()"class="fa fa-shopping-cart"></i></a>
                           <a (click)="addToWish(product)" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
                         </div>
                       </div>

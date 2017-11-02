@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { PersistenceModule } from "angular-persistence";
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
-
 import { AppComponent } from './app.component';
 import { ProductsDefComponent } from './products-def/products-def.component';
 
@@ -27,6 +26,14 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpModule } from "@angular/http";
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
+import { FaqComponent } from './faq/faq.component';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
+import { TermsandconditionsComponent } from './termsandconditions/termsandconditions.component';
+import { ShippingmethodsComponent } from './shippingmethods/shippingmethods.component';
+import { OrdersComponent } from './orders/orders.component';
+import { VouchersComponent } from './vouchers/vouchers.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SignupComponent } from './signup/signup.component';
 // import { EzPlus } from "ez-plus";
 
 
@@ -35,7 +42,16 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent},
   {path: 'products', component: ProductsDefComponent},
   {path: 'product/:product', component: ProductdetailsComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'faq', component: FaqComponent},
+  {path: 'privacy', component: PrivacypolicyComponent},
+  {path: 'terms', component: TermsandconditionsComponent},
+  {path: 'shippingmethods', component: ShippingmethodsComponent},
+  {path: 'orders', component: OrdersComponent},
+  {path: 'vouchers', component: VouchersComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'register', component: SignupComponent},
+  {path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
@@ -49,7 +65,15 @@ export const ROUTES: Routes = [
     FootercomponentComponent,
     FooterComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    FaqComponent,
+    PrivacypolicyComponent,
+    TermsandconditionsComponent,
+    ShippingmethodsComponent,
+    OrdersComponent,
+    VouchersComponent,
+    CheckoutComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

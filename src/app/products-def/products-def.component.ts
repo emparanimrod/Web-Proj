@@ -4,6 +4,7 @@ import {NgbCarouselConfig, NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ActivatedRoute, Router} from "@angular/router";
 import { ProductsService } from "../services/products.service";
 import { AsyncLocalStorage } from 'angular-async-local-storage';
+import { MenuComponent } from '../menu/menu.component';
 
 
 @Component({
@@ -31,7 +32,6 @@ export class ProductsDefComponent implements OnInit {
               private productsData: ProductsService,
               protected storage: AsyncLocalStorage ) { 
 
-                //activated routes code
 
 
     this.WooCommerce = WC({
@@ -213,6 +213,7 @@ addToWish(product){
 
     });
 
-  });
+  })
 }
+
 }

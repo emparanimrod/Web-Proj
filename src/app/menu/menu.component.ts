@@ -8,6 +8,7 @@ import { PersistenceService } from 'angular-persistence';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AsyncPipe } from '@angular/common';
+import { Route } from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -60,27 +61,6 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
-
-
-//     this.total = 0.00;
-//     //cart
-//  this.storage.getItem('cart').subscribe((data)=>{
-//    console.log('menu cart', data);
-//   this.itemCount = data.length;
-//    this.cartItems = data;
-
-//    if(this.cartItems ){
-//     this.cartItems.forEach( (item, index)=>{
-//       this.total = this.total + (item.product.price * item.qty)
-//     });
-//     console.log(data);
-//    } else {
-
-//     console.log(Error);
-
-//   }
-
-//  })
 
  this.storage.getItem('wishlist').subscribe((data)=>{
   console.log('menu wishlist', data);
@@ -163,6 +143,8 @@ export class MenuComponent implements OnInit {
         let qty = item.qty;
     
         this.cartItems.splice(i, 1);
+
+        location.reload();
     
         this.storage.setItem("cart", this.cartItems).subscribe( () => {
     
@@ -173,11 +155,13 @@ export class MenuComponent implements OnInit {
         if(this.cartItems.length == 0){
     
           this.total = 0;
+
         }
-    
+        location.reload();
       }
 
       cart(){
         this.router.navigate(['cart']);
       }
+
 }

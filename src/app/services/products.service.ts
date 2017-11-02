@@ -22,7 +22,6 @@ export class ProductsService {
 
     
     this.WooCommerce.getAsync('products').then( (data) => {
-      // console.log(JSON.parse(data.body))
      localStorage.setItem('productlist', (data.body));
       console.log(JSON.parse(localStorage.getItem('productlist')));
   });
