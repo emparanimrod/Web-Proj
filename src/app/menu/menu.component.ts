@@ -9,6 +9,7 @@ import { AsyncLocalStorage } from 'angular-async-local-storage';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AsyncPipe } from '@angular/common';
 import { Route } from "@angular/router";
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -20,6 +21,7 @@ export class MenuComponent implements OnInit {
 
   WooCommerce: any; 
   categories: any[];
+  userDetails: any[];
   parentCategories: any;
   subcat1: any;
   subcat2: any;
@@ -33,7 +35,8 @@ export class MenuComponent implements OnInit {
   total: any;
 
   constructor(dConfig: NgbDropdownConfig, public http: Http, private router: Router,
-    private persistenceService: PersistenceService, protected storage: AsyncLocalStorage) {
+    private persistenceService: PersistenceService, protected storage: AsyncLocalStorage, 
+    public userService: UserService ) {
 
     dConfig.placement= 'bottom-left';
     this.username = "";
@@ -61,6 +64,10 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
+
+// this.userService.details().subscribe(data => {
+//   console.log(data);
+// })
 
  this.storage.getItem('wishlist').subscribe((data)=>{
   console.log('menu wishlist', data);

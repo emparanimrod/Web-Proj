@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +14,14 @@ export class CartComponent implements OnInit {
   total: any;
 
   constructor( protected storage: AsyncLocalStorage,
-               private router: Router ) { }
+               private router: Router,
+              private cartService: CartService ) { 
+
+                // console.log('Cart Service', this.cartService.getCart());
+              }
 
   ngOnInit() {
+
     this.storage.getItem('cart').subscribe((data)=>{
       console.log('menu cart', data);
      this.itemCount = data.length;

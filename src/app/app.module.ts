@@ -34,6 +34,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { VouchersComponent } from './vouchers/vouchers.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SignupComponent } from './signup/signup.component';
+import { CartService } from './services/cart.service';
+import { UserService } from './services/user.service';
 // import { EzPlus } from "ez-plus";
 
 
@@ -88,7 +90,9 @@ export const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES)
 
   ],
-  providers: [ProductsService],
+  providers: [ProductsService,
+              CartService,
+              UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
