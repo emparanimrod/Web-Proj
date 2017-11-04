@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
-// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import * as WC from 'woocommerce-api';
+import { NgModel, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -16,29 +17,37 @@ export class CheckoutComponent implements OnInit {
   WooCommerce: any;
   userInfo: any;
   newOrder: any; 
+  userDetails: boolean;
 
   constructor(protected storage: AsyncLocalStorage,
-              ) {
+              private router: Router) {
                 this.WooCommerce = WC({
                   url: 'https://cloud.edgetech.co.ke/m-tush',
                   consumerKey: 'ck_3106173da4bf0f0269cd58e8be438139dc515b87',
                   consumerSecret: 'cs_ee6a004c51a4206d4d9a374b1b05adac24927f53',
                   version: 'v3',
-                  // wpAPI: false,
-                  // version: 'wc/v1',
-                  verifySsl: false,
+                  verifySsl: true,
                   queryStringAuth: true
                 });
+                
+                this.userDetails = false;
                }
 
   ngOnInit() {
 
     // user details
+    this.newOrder = {}; 
+    this.newOrder.billing_address = {};
+    this.newOrder.shipping_address = {};
+
     let email = sessionStorage.getItem('userLoginEmail');
 
       this.WooCommerce.getAsync("customers/email/"+email).then( (data) => {
       
               this.newOrder = JSON.parse(data.body).customer;
+              console.log(JSON.parse(data.body).customer)
+
+              this.userDetails = true;
     
             });
 

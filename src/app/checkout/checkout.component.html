@@ -12,7 +12,7 @@
           </div>
           <div class="form-group col-sm-6">
             <label for="lastNameInput">Last Name</label>
-            <input type="text"  [(ngModel)]="newOrder.last_name" class="form-control" name="lastNameInput" placeholder="Last Name">
+            <input type="text" [(ngModel)]="newOrder.last_name" class="form-control" name="lastNameInput" placeholder="Last Name">
           </div>
           <div class="form-group col-sm-6">
             <label for="emailInput">Email Address (*)</label>
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group col-sm-6">
             <label for="phoneInput">Phone Number (*)</label>
-            <input type="text" [(ngModel)]="newOrder.billing_address.phone" class="form-control" name="phoneInput" placeholder="Phone Number">
+            <input type="number" [(ngModel)]="newOrder.billing_address.phone"  class="form-control" name="phoneInput" placeholder="Phone Number">
           </div>
           <div class="form-group col-sm-12">
             <label for="addressInput">Address (*)</label>
@@ -34,8 +34,13 @@
             <label for="postInput">Post Code (*)</label>
             <input type="text" class="form-control" id="postInput" placeholder="Post Code">
           </div>
+  
           <div class="form-group col-sm-6">
-            <label for="countryInput">Country (*)</label>
+              <label for="countryInput">Country (*)</label>
+              <select class="form-control selectpicker" id="countryInput" data-live-search="true" data-dropup-auto="false">
+                <option value=""> --- Please Select --- </option>
+                  <option value="Kenya">Aaland Islands</option>
+              </select>
           </div>
           <div class="form-group col-sm-6">
             <label for="regionInput">Region / State (*)</label>

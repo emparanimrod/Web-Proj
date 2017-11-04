@@ -9,8 +9,7 @@ import { AsyncLocalStorage } from 'angular-async-local-storage';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AsyncPipe } from '@angular/common';
 import { Route } from "@angular/router";
-// import { UserService } from '../services/user.service';
-import { Observable, Subscribable } from 'rxjs/Observable';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -37,7 +36,7 @@ export class MenuComponent implements OnInit {
 
   constructor(dConfig: NgbDropdownConfig, public http: Http, private router: Router,
     private persistenceService: PersistenceService, protected storage: AsyncLocalStorage, 
-     ) {
+    public userService: UserService ) {
 
     dConfig.placement= 'bottom-left';
     this.username = "";
