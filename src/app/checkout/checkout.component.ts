@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import * as WC from 'woocommerce-api';
 
 @Component({
@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   newOrder: any; 
 
   constructor(protected storage: AsyncLocalStorage,
-              private router: Router) {
+              ) {
                 this.WooCommerce = WC({
                   url: 'https://cloud.edgetech.co.ke/m-tush',
                   consumerKey: 'ck_3106173da4bf0f0269cd58e8be438139dc515b87',

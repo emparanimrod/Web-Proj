@@ -40,7 +40,8 @@ import { UserService } from './services/user.service';
 
 
 export const ROUTES: Routes = [
-  { path: '', component: ProductsDefComponent },
+  // { path: '', component: ProductsDefComponent },
+  { path: 'home', component: ProductsDefComponent},
   { path: 'login', component: LoginComponent},
   {path: 'products', component: ProductsDefComponent},
   {path: 'product/:product', component: ProductdetailsComponent},
@@ -53,7 +54,7 @@ export const ROUTES: Routes = [
   {path: 'vouchers', component: VouchersComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'register', component: SignupComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'checkout', component: CheckoutComponent},
 ];
 
 @NgModule({
@@ -75,7 +76,8 @@ export const ROUTES: Routes = [
     OrdersComponent,
     VouchersComponent,
     CheckoutComponent,
-    SignupComponent
+    SignupComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -91,8 +93,7 @@ export const ROUTES: Routes = [
 
   ],
   providers: [ProductsService,
-              CartService,
-              UserService],
+              CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
